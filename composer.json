@@ -1,17 +1,19 @@
 {
-    "name": "jaceju/my-framework",
+    "name": "IRS/my-framework",
+    "license": "MIT",
     "authors": [
         {
-            "name": "jace ju",
-            "email": "jaceju@gmail.com"
+            "name": "h",
+            "email": "h@aa.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "twig/twig": "1.*",
-        "corneltek/roller": "~1.8"
+        "c9s/roller": "*"
+
     },
     "autoload": {
-        "psr-0": { "Jace": "src/" },
-        "classmap": [ "tests/controllers" ]
+        "psr-0": {"Jace": "src/"}
     }
 }

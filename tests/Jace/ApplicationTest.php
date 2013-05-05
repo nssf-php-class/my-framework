@@ -8,40 +8,50 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $_SERVER['REQUEST_URI'] = '/path/to/somewhere';
         $this->_app = new Application();
     }
 
-    public function testIndexController()
+    public function testRun()
     {
-        $_SERVER = [
-            "REQUEST_URI" => "/",
-        ];
-
-        ob_start();
-        $this->_app->run(__DIR__ . '/config.ini');
+        //$this->_app->run(__DIR__. '/config.ini');
+       // $controllerName = $this->_app->getConrtollerName();
+        $_SERVER['REQUEST_URI'] = '/aaa/dsasd';
+        $this->_app->run(__DIR__. '/config.ini');
         $controllerName = $this->_app->getControllerName();
-        $actionName = $this->_app->getActionName();
-        $this->assertEquals('index', $controllerName);
-        $this->assertEquals('index', $actionName);
 
-        $result = ob_get_clean();
-        $this->assertEquals('INDEX', $result);
     }
+    // public function testIndexController()
+    // {
+    //     $_SERVER = [
+    //         "REQUEST_URI" => "/",
+    //     ];
 
-    public function testTestController()
-    {
-        $_SERVER = [
-            "REQUEST_URI" => "/test/abc",
-        ];
+    //     ob_start();
+    //     $this->_app->run(__DIR__ . '/config.ini');
+    //     $controllerName = $this->_app->getControllerName();
+    //     $actionName = $this->_app->getActionName();
+    //     $this->assertEquals('index', $controllerName);
+    //     $this->assertEquals('index', $actionName);
 
-        ob_start();
-        $this->_app->run(__DIR__ . '/config.ini');
-        $controllerName = $this->_app->getControllerName();
-        $actionName = $this->_app->getActionName();
-        $this->assertEquals('test', $controllerName);
-        $this->assertEquals('abc', $actionName);
+    //     $result = ob_get_clean();
+    //     $this->assertEquals('INDEX', $result);
+    // }
 
-        $result = ob_get_clean();
-        $this->assertEquals('TEST', $result);
-    }
+    // public function testTestController()
+    // {
+    //     $_SERVER = [
+    //         "REQUEST_URI" => "/test/abc",
+    //     ];
+
+    //     ob_start();
+    //     $this->_app->run(__DIR__ . '/config.ini');
+    //     $controllerName = $this->_app->getControllerName();
+    //     $actionName = $this->_app->getActionName();
+    //     $this->assertEquals('test', $controllerName);
+    //     $this->assertEquals('abc', $actionName);
+
+    //     $result = ob_get_clean();
+    //     $this->assertEquals('TEST', $result);
+    // }
 }
